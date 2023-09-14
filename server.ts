@@ -1,21 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 import express, { Request, Response } from "express";
-import cors from "cors";
 import authRouter from "./routes/auth.route";
 import morgan from "morgan";
 
 export const prisma = new PrismaClient();
 const app = express();
+const cors= require('cors');
 
 async function main() {
   // Middleware
   app.use(morgan("dev"));
-  app.use(
-    cors({
-      origin: ["http://localhost:3000"],
-      credentials: true,
-    })
-  );
+  app.use(cors());
   app.use(express.json());
 
   //   Health Checker

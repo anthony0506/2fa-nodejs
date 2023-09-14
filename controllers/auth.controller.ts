@@ -12,7 +12,7 @@ const RegisterUser = async (
 ) => {
   try {
     const { name, email, password } = req.body;
-
+    console.log(name, email, password);
     await prisma.user.create({
       data: {
         name,
